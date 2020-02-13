@@ -1,6 +1,7 @@
 package mats.callbacks
 
 import android.os.Handler
+import androidx.lifecycle.MutableLiveData
 import java.util.concurrent.Callable
 
 /**
@@ -8,23 +9,36 @@ import java.util.concurrent.Callable
  */
 object Logic {
 
-    val DELAY = 1500L
+    val DELAY = 0L
 
-    fun itnterfaceTest(listenerInterface: ListenerInterface) {
-        Handler().postDelayed({
+    fun interfaceTest(listenerInterface: ListenerInterface) {
+        delay {
             listenerInterface.onClick()
-        }, DELAY)
+        }
     }
 
     fun lambdaTest(funOnClick : () -> Unit) {
-        Handler().postDelayed({
+        delay {
             funOnClick()
-        }, DELAY)
+        }
     }
 
     fun callableTest(callable : Callable<Unit>) {
-        Handler().postDelayed({
+        delay {
             callable.call()
+        }
+    }
+
+    fun livedataTest(liveData: MutableLiveData<Boolean>) {
+        delay {
+            liveData.value = liveData.value == null || !liveData.value!!
+        }
+    }
+
+
+    private fun delay(funcDelay : () -> Unit) {
+        Handler().postDelayed({
+            funcDelay()
         }, DELAY)
     }
 
