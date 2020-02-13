@@ -31,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         callable_btn.setOnClickListener {
-            showToast("test callable")
+            Logic.callableTest(Callable { showToast("test callable") })
+
         }
 
         livedata_btn.setOnClickListener {
