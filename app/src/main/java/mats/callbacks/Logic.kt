@@ -35,6 +35,10 @@ object Logic {
         }
     }
 
+    fun rxjavaTest() {
+
+    }
+
 
     private fun delay(funcDelay : () -> Unit) {
         Handler().postDelayed({

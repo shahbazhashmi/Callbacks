@@ -19,28 +19,36 @@ class MainActivity : AppCompatActivity() {
         interface_btn.setOnClickListener {
             Logic.interfaceTest(object : ListenerInterface {
                 override fun onClick() {
-                    Toast.makeText(this@MainActivity, "test interface", Toast.LENGTH_SHORT).show()
+                    showToast("test interface")
                 }
             })
         }
 
         lambda_btn.setOnClickListener {
             Logic.lambdaTest {
-                Toast.makeText(this@MainActivity, "test lambda", Toast.LENGTH_SHORT).show()
+                showToast("test lambda")
             }
         }
 
         callable_btn.setOnClickListener {
-            Logic.callableTest(Callable { Toast.makeText(this@MainActivity, "test callable", Toast.LENGTH_SHORT).show() })
+            showToast("test callable")
         }
 
         livedata_btn.setOnClickListener {
             val liveData = MutableLiveData<Boolean>()
             liveData.observe(this, Observer<Boolean> {
-                Toast.makeText(this@MainActivity, "test livedata", Toast.LENGTH_SHORT).show()
+                showToast("test livedata")
             })
             Logic.livedataTest(liveData)
         }
+
+        rxjava_btn.setOnClickListener {
+
+        }
+    }
+
+    private fun showToast(msg : String) {
+        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
     }
 
 
