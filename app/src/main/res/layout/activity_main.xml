@@ -50,10 +50,10 @@
         app:layout_constraintTop_toBottomOf="@+id/callable_btn" />
 
     <Button
-        android:id="@+id/rxjava_btn"
+        android:id="@+id/rxkotlin_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RxJava"
+        android:text="RxKotlin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="16dp"

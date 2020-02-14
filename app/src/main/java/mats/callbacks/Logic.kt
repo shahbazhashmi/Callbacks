@@ -2,6 +2,9 @@ package mats.callbacks
 
 import android.os.Handler
 import androidx.lifecycle.MutableLiveData
+import io.reactivex.Completable
+import io.reactivex.CompletableEmitter
+import io.reactivex.CompletableOnSubscribe
 import java.util.concurrent.Callable
 
 /**
@@ -35,8 +38,14 @@ object Logic {
         }
     }
 
-    fun rxjavaTest() {
-
+    fun rxTest() : Completable {
+        return Completable.create(object : CompletableOnSubscribe {
+            override fun subscribe(emitter: CompletableEmitter) {
+                delay {
+                    emitter.onComplete()
+                }
+            }
+        })
     }
 
 
